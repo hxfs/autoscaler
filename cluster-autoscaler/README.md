@@ -142,3 +142,16 @@ Supported cloud providers:
 * Alibaba Cloud https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/cloudprovider/alicloud/README.md
 * OpenStack Magnum https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/cloudprovider/magnum/README.md
 * DigitalOcean https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/cloudprovider/digitalocean/README.md
+
+### 二次开发
+1. 选择 k8s 对应的版本，这里选择 kubernetes 1.8
+```
+git checkout cluster-autoscaler-release-1.18
+```
+2. 下载依赖
+> 脚本[说明](https://github.com/hxfs/autoscaler/blob/master/cluster-autoscaler/FAQ.md#how-can-i-update-ca-dependencies-particularly-k8siokubernetes)
+```
+OS 建议使用 ubuntu, Mac OS 各种问题,
+# cd cluster-autoscaler
+# bash hack/update-vendor.sh -d/tmp/ca-update-vendor.pR3Q -fgit@github.com:kubernetes/kubernetes.git -rrelease-1.18
+```

@@ -109,9 +109,9 @@ set +o errexit
   REQUIRED_GO_VERSION=$(cat go.mod  |grep '^go ' |tr -s ' ' |cut -d ' '  -f 2)
   USED_GO_VERSION=$(go version |sed 's/.*go\([0-9]\+\.[0-9]\+\).*/\1/')
 
-  if [[ "${REQUIRED_GO_VERSION}" != "${USED_GO_VERSION}" ]];then
-    err_rerun "Invalid go version ${USED_GO_VERSION}; required go version is ${REQUIRED_GO_VERSION}."
-  fi
+  # if [[ "${REQUIRED_GO_VERSION}" != "${USED_GO_VERSION}" ]];then
+  #   err_rerun "Invalid go version ${USED_GO_VERSION}; required go version is ${REQUIRED_GO_VERSION}."
+  # fi
 
   # Fix module name and staging modules links
   sed -i "s#module k8s.io/kubernetes#module ${TARGET_MODULE}#" go.mod
@@ -203,8 +203,9 @@ set +o errexit
 
   echo "Operation finished successfully"
   if [[ "$(basename "${WORK_DIR}" | cut -d '.' -f 1)" == "ca-update-vendor" ]];then
-    echo "Deleting working directory ${WORK_DIR}"
-    rm -rf ${WORK_DIR}
+    # echo "Deleting working directory ${WORK_DIR}"
+    # rm -rf ${WORK_DIR}
+    echo "update successfully"
   else
     echo "Preserving working directory ${WORK_DIR}"
   fi
